@@ -2,11 +2,11 @@
 # each promoted by its own Image Updater alias writing images.<component>.tag.
 images:
   app:
-    repository: ghcr.io/vfpt-vodafone-foundry/cognitive-software-delivery-app
+    repository: ghcr.io/foundryrb/cognitive-software-delivery-app
     tag: latest
     pullPolicy: Always
   docs:
-    repository: ghcr.io/vfpt-vodafone-foundry/cognitive-software-delivery-docs
+    repository: ghcr.io/foundryrb/cognitive-software-delivery-docs
     tag: latest
     pullPolicy: Always
 
@@ -19,7 +19,7 @@ paused: false
 imagePullSecrets:
   - name: ghcr-pull
 
-host: cognitive-software-delivery.vodafone-foundry.com
+host: cognitive-software-delivery.rb-foundry.com
 
 # Per-team Gateway created by foundry-platform (platform/teams/cognitive-software-delivery.yaml).
 gateway:

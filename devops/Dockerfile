@@ -19,7 +19,7 @@ RUN npm ci --ignore-scripts
 COPY . .
 # Canonical site URL baked into the build (sitemap + canonical links). The
 # default is the public hostname; override for a differently-hosted build.
-ARG CSD_DOCS_SITE=https://cognitive-software-delivery.vodafone-foundry.com
+ARG CSD_DOCS_SITE=https://cognitive-software-delivery.rb-foundry.com
 ENV CSD_DOCS_SITE=${CSD_DOCS_SITE}
 RUN npm run build
 

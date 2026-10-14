@@ -22,7 +22,7 @@ the app publishes is [the overview](../../).
 | App image | `devops/Dockerfile` | Two stages: Node builds the site to `dist/`, nginx serves it on port 80 with `devops/nginx.conf`. |
 | Deployment docs | `docs/` | This Starlight site, built by `docs/Dockerfile` under the portal prefix. |
 | Helm chart | `k8s/` | Deployment + Service + HTTPRoute for the app, plus the docs Deployment + Service behind the central portal. |
-| CI caller | `.github/workflows/` | Thin callers of the shared `VFPT-VODAFONE-FOUNDRY/adf-ci` build and test workflows. |
+| CI caller | `.github/workflows/` | Thin callers of the shared `foundryRB/rb-ci` build and test workflows. |
 
 ## How content becomes a served page
 
@@ -32,7 +32,7 @@ flowchart LR
     check --> astro["astro build<br/>(remark plugins, Starlight)"]
     astro --> dist["flat HTML in dist/"]
     dist --> nginx["nginx (app image)"]
-    nginx --> reader["reader at cognitive-software-delivery.vodafone-foundry.com"]
+    nginx --> reader["reader at cognitive-software-delivery.rb-foundry.com"]
 ```
 
 The vitest-intent suite runs beside the build: every `INT-STARLIGHT-*` claim in
@@ -49,5 +49,5 @@ serves is the published methodology.
 ## Deployment
 
 Packaged by `devops/Dockerfile`, deployed via the `k8s/` Helm chart, exposed at
-`cognitive-software-delivery.vodafone-foundry.com`, and reconciled by ArgoCD from the `deploy` branch.
-This docs site publishes to `docs.vodafone-foundry.com/apps/cognitive-software-delivery`.
+`cognitive-software-delivery.rb-foundry.com`, and reconciled by ArgoCD from the `deploy` branch.
+This docs site publishes to `docs.rb-foundry.com/apps/cognitive-software-delivery`.

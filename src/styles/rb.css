@@ -1,0 +1,157 @@
+/* RB Software Engineering over the shared theme: the brand face (src/assets/fonts), the
+   lockup as the site logo (astro.config), the red as the accent on paper. Loaded after
+   @psa-department-of-engineering/starlight-theme. */
+/* System font stacks: the identity ships no webfont of its own. */
+:root { --rb-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+:root { --sl-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+:root[data-theme='dark'] {
+  --sl-color-white: hsl(0 0% 95%);
+  --sl-color-gray-1: hsl(0 0% 85%);
+  --sl-color-gray-2: hsl(0 0% 75%);
+  --sl-color-gray-3: hsl(0 0% 49%);
+  --sl-color-gray-4: hsl(210 4% 37%);
+  --sl-color-gray-5: hsl(210 6% 25%);
+  --sl-color-gray-6: hsl(210 7% 16%);
+  --sl-color-black: hsl(210 7% 12%);
+  --sl-color-accent-low: hsl(158 60% 16%);
+  --sl-color-accent: hsl(154 70% 59%);
+  --sl-color-accent-high: hsl(154 70% 82%);
+}
+:root[data-theme='light'] {
+  --sl-color-white: hsl(0 0% 5%);
+  --sl-color-gray-1: hsl(210 7% 16%);
+  --sl-color-gray-2: hsl(200 3% 23%);
+  --sl-color-gray-3: hsl(195 3% 30%);
+  --sl-color-gray-4: hsl(0 0% 49%);
+  --sl-color-gray-5: hsl(0 0% 75%);
+  --sl-color-gray-6: hsl(0 0% 90%);
+  --sl-color-gray-7: hsl(0 0% 95%);
+  --sl-color-black: hsl(0 0% 100%);
+  --sl-color-accent-low: hsl(0 0% 93%);
+  --sl-color-accent: hsl(158 100% 24%);
+  --sl-color-accent-high: hsl(158 100% 18%);
+  --sl-color-bg: #ffffff;
+  --sl-color-bg-nav: #ffffff;
+  --sl-color-bg-sidebar: #f7f7f7;
+  --sl-color-bg-inline-code: #ececec;
+  --sl-color-hairline-light: #d9d9d9;
+  --sl-color-hairline: #d9d9d9;
+  --sl-color-hairline-shade: #bebebe;
+}
+/* IDENTITY SURFACES (dark): begin */
+:root[data-theme='dark'] {
+  --sl-color-bg: #04050a;
+  --sl-color-bg-nav: #0b0d12;
+  --sl-color-bg-sidebar: #070910;
+  --sl-color-bg-inline-code: #11141b;
+  --sl-color-hairline-light: #353b47;
+  --sl-color-hairline: #23272f;
+  --sl-color-hairline-shade: #04050a;
+}
+/* IDENTITY SURFACES (dark): end */
+/* The ambient field behind every page (PageFrame): its glow and particles in the brand's green,
+   its flow lines in the bloom. */
+:root { --brand: 158 100% 33%; --primary: 154 70% 59%; }
+.site-title img { height: 1.6rem; width: auto; }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 600; font-display: swap;
+  src: url("/fonts/JetBrainsMono-600.woff2") format("woff2"); }
+
+/* IDENTITY STAGE: begin */
+/* ── The Software Engineering stage over the shell's ambient element ─────────────
+   Dark: gradient, grids, vignette, three drifting glows, rising motes. Light: paper, the faint
+   light grid, solid green motes, a slow neutral light - alive, and never a green wash.
+   Source: design-systems/rb-software-engineering/brand/stage_css.py render_field(). 
+   Appended after the shell's own rules, which stay as they are. Reduced motion and print stop it. */
+.app-atmosphere > * { display: none !important; }                      /* the shell's own streams, blobs, particles */
+.app-atmosphere {
+  position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; opacity: 1;
+  background:
+    radial-gradient(72% 72% at 50% 42%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.55) 100%) 0 0 / cover no-repeat,
+    repeating-linear-gradient(rgba(255, 255, 255, 0.022) 0 1px, transparent 1px 4px) 0 0 / auto,
+    linear-gradient(to right, rgba(0, 168, 107,  0.13) 1px, transparent 1px) 0 0 / 160px 160px,
+    linear-gradient(to bottom, rgba(0, 168, 107,  0.13) 1px, transparent 1px) 0 0 / 160px 160px,
+    linear-gradient(to right, rgba(0, 168, 107,  0.07) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(to bottom, rgba(0, 168, 107,  0.07) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(160deg, #0b0d12 0%, #070910 55%, #04050a 100%) !important;
+}
+.app-atmosphere::before, .app-atmosphere::after { content: "" !important; display: block !important; position: fixed; pointer-events: none; z-index: -1;
+  filter: none !important; border-radius: 0; mask: none; }
+.app-atmosphere::before {
+  inset: -25vh -25vw; width: auto; height: auto;
+  background:
+    radial-gradient(closest-side, rgba(78, 224, 160,  0.30) 0%, rgba(0, 168, 107,  0.10) 55%, rgba(0, 168, 107,  0) 100%) 4vw -5vh / 81vw 95vh no-repeat,
+    radial-gradient(closest-side, rgba(27, 36, 54, 0.85) 0%, rgba(27, 36, 54, 0) 100%) 61vw 50vh / 94vw 105vh no-repeat,
+    radial-gradient(closest-side, rgba(0, 168, 107,  0.16) 0%, rgba(0, 168, 107,  0) 100%) 61vw 3vh / 69vw 75vh no-repeat !important;
+  will-change: transform;
+  animation: rb-drift-a 26s linear infinite !important;
+}
+.app-atmosphere::after {
+  inset: 0 auto auto 0; width: 2px; height: 2px; border-radius: 50%; background: none !important;
+  box-shadow:
+    2.8vw 81.0vh 0 0.55px rgba(255, 107, 107, 0.58),
+    13.7vw 82.1vh 0 0.11px rgba(255, 107, 107, 0.59),
+    24.9vw 90.5vh 0 0.06px rgba(255, 107, 107, 0.53),
+    33.3vw 91.2vh 0 0.42px rgba(255, 107, 107, 0.44),
+    47.7vw 97.6vh 0 0.39px rgba(255, 107, 107, 0.63),
+    54.9vw 58.6vh 0 0.32px rgba(255, 107, 107, 0.45),
+    65.7vw 67.9vh 0 0.02px rgba(255, 107, 107, 0.58),
+    77.4vw 92.5vh 0 0.31px rgba(255, 107, 107, 0.63),
+    88.3vw 85.2vh 0 0.27px rgba(255, 107, 107, 0.52),
+    10.1vw 96.9vh 0 0.54px rgba(255, 107, 107, 0.46),
+    19.4vw 75.4vh 0 0.32px rgba(255, 107, 107, 0.47),
+    28.4vw 76.2vh 0 0.13px rgba(255, 107, 107, 0.58),
+    38.3vw 61.5vh 0 0.43px rgba(255, 107, 107, 0.56),
+    51.1vw 88.1vh 0 0.22px rgba(255, 107, 107, 0.45),
+    62.9vw 82.2vh 0 0.39px rgba(255, 107, 107, 0.63),
+    74.3vw 72.9vh 0 0.46px rgba(255, 107, 107, 0.55),
+    83.3vw 85.1vh 0 0.19px rgba(255, 107, 107, 0.46),
+    93.6vw 87.4vh 0 0.35px rgba(255, 107, 107, 0.57);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: rb-rise 15s linear -4s infinite !important;
+}
+:root[data-theme="light"] .app-atmosphere {
+  background:
+    linear-gradient(to right, rgba(0, 122, 77,  0.07) 1px, transparent 1px) 0 0 / 160px 160px,
+    linear-gradient(to bottom, rgba(0, 122, 77,  0.07) 1px, transparent 1px) 0 0 / 160px 160px,
+    linear-gradient(to right, rgba(0, 122, 77,  0.035) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(to bottom, rgba(0, 122, 77,  0.035) 1px, transparent 1px) 0 0 / 40px 40px,
+    transparent !important;
+}
+:root[data-theme="light"] .app-atmosphere::before {
+  background:
+    radial-gradient(closest-side, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 100%) 8vw 0vh / 70vw 80vh no-repeat,
+    radial-gradient(closest-side, rgba(37, 40, 43, 0.055) 0%, rgba(37, 40, 43, 0) 100%) 58vw 46vh / 80vw 90vh no-repeat !important;
+  animation-duration: 48s !important;
+}
+:root[data-theme="light"] .app-atmosphere::after {
+  box-shadow:
+    2.8vw 81.0vh 0 0.55px rgba(0, 168, 107,  0.58),
+    13.7vw 82.1vh 0 0.11px rgba(0, 168, 107,  0.59),
+    24.9vw 90.5vh 0 0.06px rgba(0, 168, 107,  0.53),
+    33.3vw 91.2vh 0 0.42px rgba(0, 168, 107,  0.44),
+    47.7vw 97.6vh 0 0.39px rgba(0, 168, 107,  0.63),
+    54.9vw 58.6vh 0 0.32px rgba(0, 168, 107,  0.45),
+    65.7vw 67.9vh 0 0.02px rgba(0, 168, 107,  0.58),
+    77.4vw 92.5vh 0 0.31px rgba(0, 168, 107,  0.63),
+    88.3vw 85.2vh 0 0.27px rgba(0, 168, 107,  0.52),
+    10.1vw 96.9vh 0 0.54px rgba(0, 168, 107,  0.46),
+    19.4vw 75.4vh 0 0.32px rgba(0, 168, 107,  0.47),
+    28.4vw 76.2vh 0 0.13px rgba(0, 168, 107,  0.58),
+    38.3vw 61.5vh 0 0.43px rgba(0, 168, 107,  0.56),
+    51.1vw 88.1vh 0 0.22px rgba(0, 168, 107,  0.45),
+    62.9vw 82.2vh 0 0.39px rgba(0, 168, 107,  0.63),
+    74.3vw 72.9vh 0 0.46px rgba(0, 168, 107,  0.55),
+    83.3vw 85.1vh 0 0.19px rgba(0, 168, 107,  0.46),
+    93.6vw 87.4vh 0 0.35px rgba(0, 168, 107,  0.57);
+}
+@keyframes rb-drift-a { 0%, 100% { transform: translate(0, 0); } 33.33% { transform: translate(8.6vw, 8.7vh); } 66.67% { transform: translate(-3.9vw, 5.1vh); } }
+@keyframes rb-rise {
+  0%   { transform: translateY(0); opacity: 0; }
+  25%  { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { transform: translateY(-130px); opacity: 0; }
+}
+@media print { .app-atmosphere { display: none !important; } }
+@media (prefers-reduced-motion: reduce) { .app-atmosphere::before, .app-atmosphere::after { animation: none !important; } .app-atmosphere::after { opacity: .8; } }
+/* IDENTITY STAGE: end */

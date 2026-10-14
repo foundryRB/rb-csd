@@ -70,9 +70,9 @@ src/plugins/           # Remark plugin: internal doc-link resolution (diagrams r
 src/test/              # vitest-intent meta-tests over every content page
 intent.yaml            # CSD intent claims the meta-tests attest
 devops/                # Dockerfile + docker-compose + nginx.conf for the app image
-docs/                  # Deployment docs site, served at docs.vodafone-foundry.com/apps/cognitive-software-delivery
+docs/                  # Deployment docs site, served at docs.rb-foundry.com/apps/cognitive-software-delivery
 k8s/                   # Helm chart: app + docs Deployments, Services, HTTPRoute
-.github/workflows/     # Thin callers of the shared VFPT-VODAFONE-FOUNDRY/adf-ci workflows
+.github/workflows/     # Thin callers of the shared foundryRB/rb-ci workflows
 ```
 
 `src/content/docs/` is the canonical methodology source; `docs/` documents this

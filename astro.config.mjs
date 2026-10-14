@@ -18,7 +18,7 @@ export default defineConfig({
     starlight({
       title: 'Cognitive Software Delivery',
       components: { PageFrame: './src/components/PageFrame.astro', SiteTitle: './src/components/SiteTitle.astro' },
-      logo: { light: './src/assets/vfpt-lockup-light.svg', dark: './src/assets/vfpt-lockup-dark.svg', alt: 'Digital Engineering, Vodafone Portugal' },
+      logo: { light: './src/assets/rb-lockup-light.svg', dark: './src/assets/rb-lockup-dark.svg', alt: 'Software Engineering, RB' },
       description: 'An AI-first delivery loop assembled from existing SDLC practice.',
       // Shared theme first, then this site's own overrides. site.css
       // must stay last: it re-maps the Starlight color tokens per scheme and
@@ -27,7 +27,7 @@ export default defineConfig({
         '@psa-department-of-engineering/starlight-theme/styles.css',
         './src/styles/custom.css',
         './src/styles/site.css',
-        './src/styles/vodafone.css',
+        './src/styles/rb.css',
       ],
       disable404Route: true,
       tableOfContents: {
