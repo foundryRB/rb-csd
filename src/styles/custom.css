@@ -1,0 +1,14 @@
+/* Site-local typography tweaks. All color lives in claude-theme.css, which
+   loads after this file and owns the palette for both schemes. */
+:root {
+  --sl-font: 'Segoe UI', 'Aptos', sans-serif;
+}
+
+.sl-markdown-content h2,
+.sl-markdown-content h3 {
+  letter-spacing: -0.01em;
+}
+
+.sl-markdown-content blockquote {
+  border-inline-start-width: 0.35rem;
+}

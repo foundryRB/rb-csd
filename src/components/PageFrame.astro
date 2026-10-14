@@ -1,0 +1,15 @@
+---
+import DefaultFrame from '@astrojs/starlight/components/PageFrame.astro';
+const offsets = [0,38,72,105,143,188,240];
+---
+<div class="app-atmosphere" aria-hidden="true">
+  {['left','right'].map(side => <svg class={side} viewBox="0 0 400 1000" preserveAspectRatio="none">{offsets.map(x => <path d={`M ${x} -100 C ${260+x} 170 ${-190+x} 320 ${15+x} 570 S ${220+x} 910 ${-10+x} 1120`} />)}</svg>)}
+  {Array.from({length:16}, () => <i />)}
+</div>
+<DefaultFrame><slot name="header" slot="header" /><slot name="sidebar" slot="sidebar" /><slot /></DefaultFrame>
+<script>
+  const pause = () => document.querySelectorAll<HTMLElement>('.app-atmosphere').forEach(field => { field.dataset.paused = String(document.hidden); });
+  pause();
+  document.addEventListener('visibilitychange',pause);
+  document.addEventListener('astro:page-load',pause);
+</script>

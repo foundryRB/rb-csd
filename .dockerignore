@@ -1,0 +1,24 @@
+# Version control
+.git
+.gitignore
+
+# Node build artifacts (rebuilt inside the image)
+node_modules/
+dist/
+.astro/
+
+# Not needed by the app image (the docs site ships its own image; k8s and CI
+# are delivery concerns outside the build)
+docs/
+k8s/
+.github/
+
+# Secrets and local state - never bake these into the image
+.env
+.env.*
+!.env.example
+
+# Editor and OS noise
+.vscode/
+.idea/
+*.log

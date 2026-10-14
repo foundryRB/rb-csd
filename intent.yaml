@@ -1,0 +1,117 @@
+# CSD documentation intent claims (CSD-INTENT-01 canonical schema).
+#
+# Two claim families live here:
+#
+# INT-STARLIGHT-*: reusable page-STRUCTURE claims adopted from the STARLIGHT
+# Intent Bundle (../csd-library/bundles/starlight). They validate generic,
+# defensible-universal page shape on every doc under src/content/docs/.
+# The bundle's frontmatter claims (title / id / type / status / updated) are
+# deliberately NOT imported: INT-CSD-003 below owns frontmatter enforcement,
+# and double-enforcing the same contract in two places would let the two
+# definitions drift. Markers: src/test/intent-structure.test.ts.
+#
+# INT-CSD-*: the methodology's own dog-food claims, documented with rationale
+# under src/content/docs/01-INTENT/intents/. Markers live in the suite that
+# enforces each claim (terminology, links, metadata, lifecycle, markdownlint
+# tests under src/test/).
+#
+# csd-intent reconciles markers <-> claims across all of them.
+
+INT-STARLIGHT-007:
+  version: 1.0.0
+  status: active
+  statement: "Every doc page MUST open with non-empty introductory prose before its first level-2 heading. A single leading navigation line or bold-only line before the prose is allowed; what matters is that some non-empty, non-heading prose exists before the first level-2 heading."
+  rationale: "A page that jumps straight into sections gives the reader no orientation; a short intro states what the page is and how its parts fit before the first `## ` heading."
+  test:
+    scope: unit
+    component: PageStructure
+    type: invariant
+  criticality: high
+
+INT-STARLIGHT-008:
+  version: 1.0.0
+  status: active
+  statement: "Every doc page MUST contain at least one level-2 heading."
+  rationale: "Level-2 headings are the page's sections; a page with none is an undifferentiated wall of text with no nav anchors or scannable structure."
+  test:
+    scope: unit
+    component: PageStructure
+    type: invariant
+  criticality: medium
+
+INT-STARLIGHT-009:
+  version: 1.0.0
+  status: active
+  statement: "A page with `type: Flow` MUST contain a Mermaid `sequenceDiagram` and a steps section (a level-2 heading named Steps OR an ordered list)."
+  rationale: "A Flow tells a dynamic story; the sequence diagram is the picture and the steps are the narration. One without the other is half a flow."
+  test:
+    scope: unit
+    component: PageStructure
+    type: contract
+  criticality: high
+
+INT-STARLIGHT-010:
+  version: 1.0.0
+  status: active
+  statement: "A page with `type: Guide` MUST contain a numbered procedure: an ordered list OR at least two headings that begin with a number (for example `## 1. ...`)."
+  rationale: "A Guide is a how-to; the reader needs ordered steps to follow, expressed either as an ordered list or as numbered section headings."
+  test:
+    scope: unit
+    component: PageStructure
+    type: contract
+  criticality: medium
+
+INT-CSD-001:
+  version: 1.0.0
+  status: active
+  statement: "CSD documentation must use canonical cognitive mode terminology; deprecated role names must never appear in prose"
+  rationale: "Readers and AI tools consuming the docs learn the mental model the prose carries; deprecated role names teach the wrong one and make the methodology contradict itself."
+  test:
+    scope: unit
+    component: CSD Documentation
+    type: invariant
+  criticality: critical
+
+INT-CSD-002:
+  version: 1.0.0
+  status: active
+  statement: "Every internal markdown link in CSD documentation must resolve to an existing file"
+  rationale: "Internal links are the navigation graph; a broken link dead-ends readers and starves AI tools of context."
+  test:
+    scope: unit
+    component: CSD Documentation
+    type: invariant
+  criticality: critical
+
+INT-CSD-003:
+  version: 1.0.0
+  status: active
+  statement: "Every CSD document must contain frontmatter metadata with all mandatory fields set to valid values"
+  rationale: "Frontmatter is the machine-readable surface of every page; classification, validation, and navigation generation all depend on it."
+  test:
+    scope: unit
+    component: CSD Documentation
+    type: invariant
+  criticality: critical
+
+INT-CSD-004:
+  version: 1.0.0
+  status: active
+  statement: "The CSD lifecycle section must document all five phases (Intent, Synthesize, Enforce, Learn, Deploy) with dedicated child documents"
+  rationale: "The lifecycle diagram promises five phases; an undocumented phase is a gap practitioners cannot learn from."
+  test:
+    scope: unit
+    component: CSD Documentation
+    type: contract
+  criticality: high
+
+INT-CSD-005:
+  version: 1.0.0
+  status: active
+  statement: "All CSD markdown files must pass markdownlint validation with zero errors"
+  rationale: "Lint errors break rendering and automated parsing unpredictably; a zero-error baseline keeps the docs machine-consumable."
+  test:
+    scope: unit
+    component: CSD Documentation
+    type: invariant
+  criticality: medium

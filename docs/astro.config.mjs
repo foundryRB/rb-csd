@@ -1,0 +1,49 @@
+import { defineConfig } from 'astro/config';
+import mermaid from 'astro-mermaid';
+import starlight from '@astrojs/starlight';
+import { mermaidConfig } from '@psa-department-of-engineering/starlight-theme';
+
+export default defineConfig({
+  site: process.env.SITE_URL ?? 'http://localhost:4321',
+  // The central docs portal (ADR-023) mounts this site under /apps/<app>; CI passes
+  // the prefix as DOCS_BASE. Astro `base` prefixes asset + Starlight-generated link
+  // URLs so they resolve under the prefix. Defaults to '/' for standalone/local.
+  base: process.env.DOCS_BASE || '/',
+  vite: {
+    // This site builds independently. Avoid discovering the parent app's
+    // tsconfig, whose Astro preset requires the parent's dependency install.
+    tsconfig: './tsconfig.json',
+  },
+  integrations: [
+    // Must precede starlight so it transforms ```mermaid blocks before
+    // expressive-code renders them as code. autoTheme follows dark/light.
+    // mermaidConfig + the stylesheet come from the shared starlight-theme package
+    // (one source of truth; REF-StarlightDocs 8.1).
+    mermaid({ autoTheme: true, mermaidConfig }),
+    starlight({
+      title: 'Cognitive Software Delivery',
+      components: { SiteTitle: './src/components/SiteTitle.astro' },
+      logo: { light: './src/assets/vfpt-lockup-light.svg', dark: './src/assets/vfpt-lockup-dark.svg', alt: 'Digital Engineering, Vodafone Portugal' },
+      description: 'Deployment and architecture docs for the CSD methodology site',
+      // Shared theme first, then this site's own overrides (kept minimal).
+      customCss: [
+        '@psa-department-of-engineering/starlight-theme/styles.css',
+        './src/styles/custom.css', './src/styles/vodafone.css'],
+      lastUpdated: true,
+      tableOfContents: {
+        minHeadingLevel: 2,
+        maxHeadingLevel: 3,
+      },
+      sidebar: [
+        {
+          label: 'Start Here',
+          items: ['index'],
+        },
+        {
+          label: 'Architecture',
+          items: ['architecture/components'],
+        },
+      ],
+    }),
+  ],
+});

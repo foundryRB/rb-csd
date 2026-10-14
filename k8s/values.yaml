@@ -1,0 +1,53 @@
+# Two released images (the multi-image binding): the app site and its docs site,
+# each promoted by its own Image Updater alias writing images.<component>.tag.
+images:
+  app:
+    repository: ghcr.io/vfpt-vodafone-foundry/cognitive-software-delivery-app
+    tag: latest
+    pullPolicy: Always
+  docs:
+    repository: ghcr.io/vfpt-vodafone-foundry/cognitive-software-delivery-docs
+    tag: latest
+    pullPolicy: Always
+
+# Pause switch: apps ship running. The platform scales the app to zero by
+# overriding this to true on the app's ArgoCD Application (docs stay up).
+paused: false
+
+# Materialized in-namespace by foundry-platform. Set to [] when the GHCR package
+# is public (ADR-015).
+imagePullSecrets:
+  - name: ghcr-pull
+
+host: cognitive-software-delivery.vodafone-foundry.com
+
+# Per-team Gateway created by foundry-platform (platform/teams/cognitive-software-delivery.yaml).
+gateway:
+  name: cognitive-software-delivery
+  namespace: network
+
+resources:
+  requests:
+    cpu: 10m
+    memory: 32Mi
+  limits:
+    memory: 64Mi
+
+# The site is public content by design: nginx serves the published methodology and
+# nothing else, so no route is protected and no fail-closed gate applies (ADR-017's
+# documented escape). existingSecret stays "" deliberately; INT-FOUNDRY-023 holds
+# vacuously. An instance that ever needs gating layers edge SSO (Cloudflare Access)
+# in front rather than teaching the static site auth.
+auth:
+  existingSecret: ""
+
+# Per-app docs site served behind the central portal at docs.<domain>/apps/<app>
+# (ADR-018). Built from docs/ by CI with base baked in; this just runs the image.
+docs:
+  enabled: true
+  resources:
+    requests:
+      cpu: 10m
+      memory: 32Mi
+    limits:
+      memory: 64Mi

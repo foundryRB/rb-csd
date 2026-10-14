@@ -1,0 +1,35 @@
+{
+  "name": "cognitive-software-delivery",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cognitive Software Delivery - Methodology Documentation",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "lint:md": "markdownlint-cli2",
+    "validate": "npm run lint:md && npm run test:run && npm run build"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/markdown-remark": "^7.3.0",
+    "@astrojs/starlight": "^0.42.5",
+    "@psa-department-of-engineering/starlight-theme": "^1.2.0",
+    "@psa-department-of-engineering/vitest-intent": "^2.0.1",
+    "@types/node": "^22.15.3",
+    "astro": "^7.3.5",
+    "astro-mermaid": "^2.1.0",
+    "markdownlint-cli2": "^0.23.3",
+    "mermaid": "^11.16.1",
+    "typescript": "^5.8.3",
+    "unist-util-visit": "^5.0.0",
+    "vitest": "^5.0.3",
+    "zod": "^3.25.76"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

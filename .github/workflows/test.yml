@@ -1,0 +1,40 @@
+# cognitive-software-delivery tests: run the site's Starlight meta-tests (the root
+# project IS the product) and the deployment docs' meta-tests on every push to main
+# and on PRs. Separate from build.yml (conformance + release): tests gate the code,
+# the build ships artifacts. Runs on the in-cluster ARC runners (arc-dind); when k3s
+# is down the jobs simply queue until a runner is available (mirrors the csd-library
+# library.yml direction, ADR-0001).
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  site:
+    runs-on: arc-dind
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Site meta-tests + build
+        run: |
+          npm ci
+          npm run validate
+
+  docs:
+    runs-on: arc-dind
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Deployment-docs meta-tests + build
+        working-directory: docs
+        run: |
+          npm ci
+          npm test
+          npm run lint:md
+          DOCS_BASE=/apps/cognitive-software-delivery npm run build

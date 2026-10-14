@@ -1,0 +1,17 @@
+name: cognitive-software-delivery
+
+# Build the Astro Starlight site and serve it with nginx on http://localhost:8082.
+# Run from this directory:
+#   cd devops && docker compose up --build
+# Port 8082 sidesteps switchboard (8080) and workbench (8081) so the three can
+# coexist without colliding.
+
+services:
+    site:
+        build:
+            context: ..
+            dockerfile: devops/Dockerfile
+        image: cognitive-software-delivery-app:local
+        ports:
+            - "8082:80"
+        restart: unless-stopped

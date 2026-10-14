@@ -1,0 +1,210 @@
+/* Site composition and ambient motion. Palette and typography come from starlight-theme. */
+
+.mermaid .transition {
+  stroke: var(--mmd-edge, var(--sl-color-gray-3)) !important;
+}
+.mermaid .node circle.state-start,
+.mermaid .node .fork-join {
+  fill: var(--sl-color-gray-3) !important;
+  stroke: var(--sl-color-gray-3) !important;
+}
+.mermaid .node circle.state-end {
+  fill: var(--sl-color-bg) !important;
+  stroke: var(--sl-color-gray-3) !important;
+}
+.mermaid .statediagram-cluster rect {
+  fill: var(--mmd-surface, var(--sl-color-gray-6)) !important;
+  stroke: var(--mmd-surface-border, var(--sl-color-gray-5)) !important;
+}
+.mermaid .statediagram-state rect.divider {
+  fill: transparent !important;
+}
+
+
+.starlight-aside {
+  border-radius: 0.5rem;
+}
+.sl-markdown-content .card {
+  border-radius: 0.5rem;
+}
+
+
+:root {--brand:26.053 95% 52.941%;--primary:26 100% 72%;}
+body {isolation:isolate;}
+.app-wordmark {font-size:32px;font-weight:800;letter-spacing:-.065em;line-height:1;color:var(--sl-color-text);}
+.app-wordmark span {color:#f97815;}
+.app-title {display:flex;align-items:center;gap:14px;color:var(--sl-color-text);text-decoration:none;}
+.app-title-label {font-size:16px;font-weight:600;}
+@media(max-width:600px){.app-title-label{font-size:12px;max-width:100px;line-height:1.2;}}
+.app-atmosphere {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 100% 15%, hsl(var(--brand) / 0.13), transparent 55%),
+        radial-gradient(ellipse at 0% 85%, hsl(var(--brand) / 0.08), transparent 50%);
+}
+.app-atmosphere svg {
+    position: absolute;
+    top: -10vh;
+    width: 28vw;
+    min-width: 170px;
+    height: 120vh;
+    overflow: visible;
+    fill: none;
+    stroke: hsl(var(--primary));
+    stroke-width: 1;
+    opacity: 0.28;
+    animation: app-flow 24s ease-in-out infinite alternate;
+}
+.app-atmosphere .left {
+    left: -11vw;
+    scale: -1 1;
+    animation-delay: -12s;
+}
+.app-atmosphere .right {
+    right: -11vw;
+}
+.app-atmosphere i {
+    position: absolute;
+    bottom: -8px;
+    width: 5px;
+    height: 5px;
+    border-radius: 45% 55%;
+    background: hsl(var(--brand));
+    box-shadow: 0 0 6px hsl(var(--brand) / 0.5);
+    opacity: 0;
+    animation: app-rise 20s linear infinite;
+}
+@keyframes app-flow {
+    to {
+        translate: 0 6vh;
+        rotate: 3deg;
+    }
+}
+@keyframes app-rise {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.6);
+    }
+    15% {
+        opacity: 0.5;
+    }
+    65% {
+        opacity: 0.35;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(16px, -85vh);
+    }
+}
+.app-atmosphere[data-paused='true'] * {
+    animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+    .app-atmosphere * {
+        animation: none !important;
+    }
+}
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+    .app-atmosphere {
+        display: none;
+    }
+}
+@media print {
+    .app-atmosphere,
+    .unused-print-header {
+        display: none !important;
+    }
+    body {
+        background: white;
+        color: black;
+    }
+    .app-frame {
+        width: 100%;
+    }
+}
+.app-atmosphere i:nth-of-type(1) {
+    left: 3%;
+    animation-delay: 0s;
+    animation-duration: 14s;
+}
+.app-atmosphere i:nth-of-type(2) {
+    left: 85%;
+    animation-delay: -1.7s;
+    animation-duration: 16s;
+}
+.app-atmosphere i:nth-of-type(3) {
+    left: 17%;
+    animation-delay: -3.4s;
+    animation-duration: 18s;
+}
+.app-atmosphere i:nth-of-type(4) {
+    left: 80%;
+    animation-delay: -5.1s;
+    animation-duration: 20s;
+}
+.app-atmosphere i:nth-of-type(5) {
+    left: 12%;
+    animation-delay: -6.8s;
+    animation-duration: 22s;
+}
+.app-atmosphere i:nth-of-type(6) {
+    left: 94%;
+    animation-delay: -8.5s;
+    animation-duration: 24s;
+}
+.app-atmosphere i:nth-of-type(7) {
+    left: 7%;
+    animation-delay: -10.2s;
+    animation-duration: 26s;
+}
+.app-atmosphere i:nth-of-type(8) {
+    left: 89%;
+    animation-delay: -11.9s;
+    animation-duration: 14s;
+}
+.app-atmosphere i:nth-of-type(9) {
+    left: 21%;
+    animation-delay: -13.6s;
+    animation-duration: 16s;
+}
+.app-atmosphere i:nth-of-type(10) {
+    left: 84%;
+    animation-delay: -15.3s;
+    animation-duration: 18s;
+}
+.app-atmosphere i:nth-of-type(11) {
+    left: 16%;
+    animation-delay: -17s;
+    animation-duration: 20s;
+}
+.app-atmosphere i:nth-of-type(12) {
+    left: 79%;
+    animation-delay: -18.7s;
+    animation-duration: 22s;
+}
+.app-atmosphere i:nth-of-type(13) {
+    left: 11%;
+    animation-delay: -20.4s;
+    animation-duration: 24s;
+}
+.app-atmosphere i:nth-of-type(14) {
+    left: 93%;
+    animation-delay: -22.1s;
+    animation-duration: 26s;
+}
+.app-atmosphere i:nth-of-type(15) {
+    left: 6%;
+    animation-delay: -23.8s;
+    animation-duration: 14s;
+}
+.app-atmosphere i:nth-of-type(16) {
+    left: 88%;
+    animation-delay: -25.5s;
+    animation-duration: 16s;
+}
+
+.app-atmosphere svg {stroke:hsl(var(--brand));}

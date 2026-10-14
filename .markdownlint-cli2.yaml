@@ -1,0 +1,16 @@
+config:
+  default: true
+  MD013: false          # Line length - disabled for documentation
+  MD033: false          # Inline HTML - allow for special formatting (e.g. <br/> in tables)
+  MD041: false          # First line h1 - metadata table comes first
+  MD060: false          # Table column style - pipe spacing preference, not quality signal
+  MD024:
+    siblings_only: true # Allow duplicate headings in different sections
+
+globs:
+  - "src/content/docs/**/*.md"
+  - "README.md"
+
+ignores:
+  - "node_modules"
+  - "dist"
