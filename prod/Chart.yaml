@@ -2,8 +2,8 @@ apiVersion: v2
 name: cognitive-software-delivery
 description: prod environment pin for cognitive-software-delivery (ADR-025 deploy branch).
 type: application
-version: 1.0.0
+version: 1.0.1
 dependencies:
   - name: cognitive-software-delivery
-    version: 1.0.0
+    version: 1.0.1
     repository: oci://ghcr.io/foundryrb/charts

@@ -8,7 +8,7 @@ cognitive-software-delivery:
   images:
     app:
       repository: ghcr.io/foundryrb/cognitive-software-delivery-app
-      tag: 1.0.0
+      tag: 1.0.1
     docs:
       repository: ghcr.io/foundryrb/cognitive-software-delivery-docs
-      tag: 1.0.0
+      tag: 1.0.1
