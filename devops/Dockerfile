@@ -5,7 +5,9 @@
 # Build context is the project root (set by docker-compose.yml: context: ..).
 
 # ---- Build stage ----
-FROM node:22-alpine AS build
+# Static output is identical on every CPU, so build on the runner's own
+# architecture (no QEMU emulation); only the nginx stage is per-target.
+FROM --platform=$BUILDPLATFORM node:22-alpine AS build
 WORKDIR /workspace
 
 # Cache the dep install layer separately from source: the lockfile changes far

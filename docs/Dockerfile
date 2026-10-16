@@ -9,7 +9,8 @@
 #     the no-rewrite route's /apps/cognitive-software-delivery/... requests map to
 #     real files.
 # DOCS_BASE defaults to / for a standalone/local build (serves at the root).
-FROM node:22-slim AS build
+# Static output is arch-independent: build natively, skip QEMU emulation.
+FROM --platform=$BUILDPLATFORM node:22-slim AS build
 ARG DOCS_BASE=/
 WORKDIR /app
 COPY package.json package-lock.json ./
