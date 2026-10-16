@@ -1,0 +1,14 @@
+# Per-install values. Keys here are THIS install's own facts, pinned
+# explicitly: the app chart's defaults belong to whichever install it was
+# authored against, and an omitted key inherits them silently.
+# The site is public content by design (see the chart's values.yaml): no realm,
+# no database and no credential are granted to it.
+cognitive-software-delivery:
+  host: cognitive-software-delivery.rb-foundry.com
+  images:
+    app:
+      repository: ghcr.io/foundryrb/cognitive-software-delivery-app
+      tag: 1.0.0
+    docs:
+      repository: ghcr.io/foundryrb/cognitive-software-delivery-docs
+      tag: 1.0.0
